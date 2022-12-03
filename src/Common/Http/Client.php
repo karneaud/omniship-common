@@ -2,7 +2,6 @@
 
 namespace Omniship\Common\Http;
 
-use function GuzzleHttp\Psr7\str;
 use Http\Client\HttpClient;
 use Http\Discovery\HttpClientDiscovery;
 use Http\Discovery\MessageFactoryDiscovery;
