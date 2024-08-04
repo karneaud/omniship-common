@@ -5,7 +5,7 @@ namespace Omniship\Common\Http;
 use Http\Client\HttpClient;
 use Http\Discovery\HttpClientDiscovery;
 use Http\Discovery\MessageFactoryDiscovery;
-use Http\Message\RequestFactory;
+use Psr\Http\Message\RequestFactoryInterface;
 use Omniship\Common\Http\Exception\NetworkException;
 use Omniship\Common\Http\Exception\RequestException;
 use Psr\Http\Message\RequestInterface;
@@ -28,7 +28,7 @@ class Client implements ClientInterface
      */
     private $requestFactory;
 
-    public function __construct($httpClient = null, RequestFactory $requestFactory = null)
+    public function __construct($httpClient = null, RequestFactoryInterface $requestFactory = null)
     {
         $this->httpClient = $httpClient ?: HttpClientDiscovery::find();
         $this->requestFactory = $requestFactory ?: MessageFactoryDiscovery::find();
