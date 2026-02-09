@@ -10,7 +10,7 @@
             "email": "kendall.arneaud@gmail.com"
         }
     ],
-    "extra": { "branch-alias": { "dev-version/2.0": "2.0.x-dev" } },
+    "extra": { "branch-alias": { "2.x": "2.0.x-dev" } },
     "require": {
         "php": "^8.1",
         "hackerpro536/stringy": "^1.0"
