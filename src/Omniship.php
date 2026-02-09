@@ -5,8 +5,7 @@
 
 namespace Omniship;
 
-use Omniship\Common\CarrierFactory;
-use Omniship\Common\Http\ClientInterface;
+use Omniship\Common\Factories\CarrierFactory;
 
 /**
  * Omniship class
@@ -40,16 +39,17 @@ use Omniship\Common\Http\ClientInterface;
  *
  * @method static array  all()
  * @method static array  replace(array $carriers)
- * @method static string register(string $className)
+ * @method static string register(string $class_name)
  * @method static array  find()
  * @method static array  getSupportedCarriers()
  * @codingStandardsIgnoreStart
- * @method static \Omniship\Common\CarrierInterface create(string $class, ClientInterface $httpClient = null, \Symfony\Component\HttpFoundation\Request $httpRequest = null)
+ * @method static \Omniship\Common\CarrierInterface create(string $class, \Omniship\Common\Contracts\DataSourceInterface $data_source = null)
+ * @method static \Omniship\Common\Contracts\ServiceInterface createService(string $carrier_class, string $service_name, \Omniship\Common\Contracts\CarrierInterface $carrier, array $parameters = [])
  * @codingStandardsIgnoreEnd
  *
  * @see \Omniship\Common\CarrierFactory
  */
-class Omniship
+final class Omniship
 {
 
     /**
@@ -106,10 +106,11 @@ class Omniship
      *
      * @return mixed
      */
-    public static function __callStatic($method, $parameters)
+    public static function __callStatic($method, $parameters = [])
     {
         $factory = self::getFactory();
 
-        return call_user_func_array(array($factory, $method), $parameters);
+        return call_user_func_array([$factory, $method], $parameters);
     }
+
 }

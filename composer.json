@@ -1,28 +1,63 @@
 {
-    "name": "cjario/omniship-common",
-    "description": "A Multi Gateway Shipping Wrapper for PHP.",
+    "name": "karneaud/omniship-common",
+    "description": "A unified, extensible library for integrating shipping carriers with standardized property management.",
     "type": "library",
-    "keywords": ["shipping", "codejar", "carrier", "australia-post", "dhl"],
     "license": "MIT",
-    "authors": [{
-        "name": "Tarun Mukherjee",
-        "email": "tmukherjee13@gmail.com"
-    }],
+    "version": "2.0",
+    "authors": [
+        {
+            "name": "Kendall Arneaud",
+            "email": "kendall.arneaud@gmail.com"
+        }
+    ],
     "require": {
-        "php": "^5.6|^7|^8",
-        "php-http/client-implementation": "^1",
-        "psr/http-factory": "^1.0.2",
-        "php-http/discovery": "^1.14",
-        "symfony/http-foundation": "^2.1|^3|^4|^5|^6"
+        "php": "^8.1",
+        "hackerpro536/stringy": "^1.0"
+    },
+    "suggest": {
+        "commerceguys/addressing": "For address validation and formatting (optional)",
+        "moneyphp/money": "For precise monetary calculations (optional)",
+        "php-units-of-measure/php-units-of-measure": "For unit conversion (optional)",
+        "guzzlehttp/guzzle": "For HTTP client functionality (optional)",
+        "dvdoug/boxpacker": "For 4d box packing"
     },
     "require-dev": {
-        "php-http/mock-client": "^1",
-        "squizlabs/php_codesniffer": "^3"
+        "phpunit/phpunit": "^9.5",                      
+        "squizlabs/php_codesniffer": "^3.7",           
+        "dealerdirect/phpcodesniffer-composer-installer": "^0.7", 
+        "fakerphp/faker": "^1.20",                     
+        "mockery/mockery": "^1.5",                     
+        "roave/security-advisories": "dev-latest"      
     },
     "autoload": {
         "psr-4": {
-            "Omniship\\Common\\": "src/Common"
-        },
-        "classmap": ["src/Omniship.php"]
-    }
+            "Omniship\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Omniship\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "phpunit",
+        "lint": "phpcs src/ --standard=PSR12",
+        "fix": "phpcbf src/ --standard=PSR12",
+        "post-install-cmd": [
+            "@lint"
+        ],
+        "post-update-cmd": [
+            "@lint"
+        ]
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "sort-packages": true,
+        "platform-check": false,
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": false
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
 }

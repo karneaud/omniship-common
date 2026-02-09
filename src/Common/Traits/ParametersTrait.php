@@ -1,9 +1,10 @@
 <?php
 
-namespace Omniship\Common;
+namespace Omniship\Common\Traits;
 
+use Omniship\Common\Helper;
+use Omniship\Common\Objects\ParameterBag;
 use Omniship\Common\Exception\InvalidRequestException;
-use Symfony\Component\HttpFoundation\ParameterBag;
 
 trait ParametersTrait
 {
@@ -19,13 +20,14 @@ trait ParametersTrait
      *
      * @param string $key Parameter key
      * @param mixed $value Parameter value
-     * @return $this
      */
     protected function setParameter($key, $value)
     {
         $this->parameters->set($key, $value);
+    }
 
-        return $this;
+    public function hasParameter($key, $value = null) : bool {
+        return (bool) $this->parameters->has($key, $value);
     }
 
     /**
@@ -43,7 +45,7 @@ trait ParametersTrait
      *
      * @return array An associative array of parameters.
      */
-    public function getParameters()
+    public function getParameters() : array
     {
         return $this->parameters->all();
     }
@@ -60,7 +62,6 @@ trait ParametersTrait
     {
         $this->parameters = new ParameterBag;
         Helper::initialize($this, $parameters);
-        return $this;
     }
 
     /**
