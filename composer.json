@@ -3,7 +3,6 @@
     "description": "A unified, extensible library for integrating shipping carriers with standardized property management.",
     "type": "library",
     "license": "MIT",
-    "version": "2.0",
     "authors": [
         {
             "name": "Kendall Arneaud",
