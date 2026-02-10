@@ -35,4 +35,6 @@ interface ServiceInterface
      * @return mixed
      */
     public function setParameter(string $key, $value);
+
+    public function getDefaultParameters() : array;
 }

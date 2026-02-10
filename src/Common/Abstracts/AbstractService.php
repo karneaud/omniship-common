@@ -63,4 +63,6 @@ abstract class AbstractService implements ServiceInterface
 
         return $this;
     }
+
+    abstract public function getDefaultParameters() : array ;
 }
