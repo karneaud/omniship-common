@@ -49,4 +49,8 @@ class TestServiceMock extends AbstractService implements ServiceInterface
 
         return $this;
     }
+
+    public function getDefaultParameters() : array {
+        return $this->parameters->all();
+    }
 }

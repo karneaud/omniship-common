@@ -44,7 +44,7 @@
         "lint": "phpcs src/ --standard=PSR12",
         "fix": "phpcbf src/ --standard=PSR12",
         "post-install-cmd": [
-            "@lint"
+            "composer test"
         ],
         "post-update-cmd": [
             "@lint"
