@@ -11,7 +11,7 @@ namespace Omniship\Common;
  * This interface defines the functionality that all cart items in
  * the Omniship system are to have.
  */
-interface ItemInterface
+interface ItemInterface extends ResultInterface
 {
     public function getWeight() : float;
     public function getHeight() : float;
