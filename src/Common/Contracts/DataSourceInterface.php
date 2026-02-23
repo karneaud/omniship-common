@@ -15,5 +15,5 @@ namespace Omniship\Common\Contracts;
  */
 interface DataSourceInterface extends ResultInterface
 {
-   public function fetchData() : ResultInterface;
+   public function fetchData(array $params = []) : ResultInterface;
 }
