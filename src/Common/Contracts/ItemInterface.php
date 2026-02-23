@@ -3,7 +3,7 @@
  * Cart Item interface
  */
 
-namespace Omniship\Common;
+namespace Omniship\Common\Contracts;
 
 /**
  * Cart Item interface
