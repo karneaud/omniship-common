@@ -24,7 +24,7 @@ final class ServiceFactory
     ): ?ServiceInterface {
        
         /** @var ServiceInterface $instance */
-        $instance = new $service($carrier);
+        $instance = new $service($carrier, ...$parameters );
         if (method_exists($instance, 'initialize')) {
             $instance->initialize($parameters);
         }
